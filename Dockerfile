@@ -1,12 +1,7 @@
-FROM maven:3-eclipse-temurin-19 as BUILD
+FROM openjdk:21
 
-COPY . /usr/src/app
-RUN mvn --batch-mode -f /usr/src/app/pom.xml clean package
+WORKDIR /app
 
-FROM eclipse-temurin:19-jre
-ENV PORT 8080
-EXPOSE 8080
-COPY --from=BUILD /usr/src/app/target /opt/target
-WORKDIR /opt/target
+COPY target/creditos-0.0.1-SNAPSHOT.jar .
 
-CMD ["/bin/bash", "-c", "find -type f -name '*-SNAPSHOT.jar' | xargs java -jar"]
+CMD ["java", "-jar", "creditos-0.0.1-SNAPSHOT.jar"]
