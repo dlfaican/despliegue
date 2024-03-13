@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: despliegue2
-          image: acrworkflow1710361556046.azurecr.io/image-workflow-1710361556046:latest
+          image: acrworkflow1710363019823.azurecr.io/image-workflow-1710363019823:latest
           ports:
             - containerPort: 8080
