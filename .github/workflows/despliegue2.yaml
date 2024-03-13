@@ -5,11 +5,11 @@ name: despliegue2
             - main
     workflow_dispatch: {}
 env:
-    ACR_RESOURCE_GROUP: Banquito-Stage
-    AZURE_CONTAINER_REGISTRY: banquitostageacr
+    ACR_RESOURCE_GROUP: Banquito-Prod
+    AZURE_CONTAINER_REGISTRY: acrworkflow1710362337066
     CLUSTER_NAME: Banquito-Prod-AKS
     CLUSTER_RESOURCE_GROUP: Banquito-Prod
-    CONTAINER_NAME: image-workflow-1710361556046
+    CONTAINER_NAME: image-workflow-1710362337066
     DEPLOYMENT_MANIFEST_PATH: |
         ./despliegue.yaml
 jobs:
@@ -61,4 +61,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: namespace-workflow-1710361556046
+                namespace: namespace-workflow-1710362337066
