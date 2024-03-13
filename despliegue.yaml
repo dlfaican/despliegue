@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: despliegue2
+  labels:
+    app: despliegue2
+  namespace: desplieguebanquito
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: despliegue2
+  template:
+    metadata:
+      labels:
+        app: despliegue2
+    spec:
+      containers:
+        - name: despliegue2
+          image: acrworkflow1710361556046.azurecr.io/image-workflow-1710361556046:latest
+          ports:
+            - containerPort: 8080
