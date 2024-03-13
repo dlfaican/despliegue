@@ -1,22 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
+kind: Namespace
+apiVersion: v1
 metadata:
-  name: despliegue2
+  name: desplieguebanquito
+  uid: a79753ac-eef1-4e7a-abb3-b71777d27f26
+  resourceVersion: '926064'
+  creationTimestamp: '2024-03-13T19:38:53Z'
   labels:
-    app: despliegue2
-  namespace: desplieguebanquito
+    kubernetes.io/metadata.name: desplieguebanquito
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: v1
+      time: '2024-03-13T19:38:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:kubernetes.io/metadata.name: {}
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: despliegue2
-  template:
-    metadata:
-      labels:
-        app: despliegue2
-    spec:
-      containers:
-        - name: despliegue2
-          image: acrworkflow1710363019823.azurecr.io/image-workflow-1710363019823:latest
-          ports:
-            - containerPort: 8080
+  finalizers:
+    - kubernetes
+status:
+  phase: Active
